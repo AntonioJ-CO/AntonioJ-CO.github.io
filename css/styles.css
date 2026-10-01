@@ -1,0 +1,873 @@
+/* ==========================================================
+   PORTFÓLIO — ANTÔNIO OLIVEIRA
+   CSS organizado
+
+   Ordem das regras:
+   1. Variáveis e reset
+   2. Elementos gerais
+   3. Cabeçalho / navegação
+   4. Hero
+   5. Seções gerais
+   6. Sobre
+   7. Tecnologias
+   8. Projetos
+   9. Formação / timeline
+   10. Contato
+   11. Rodapé
+   12. Responsividade
+   ========================================================== */
+
+/* ==========================================================
+   1. VARIÁVEIS E RESET
+   ========================================================== */
+
+:root {
+    --bg: #080b12;
+    --surface: #101520;
+    --text: #f3f5f7;
+    --muted: #a8b0bf;
+    --line: rgba(255, 255, 255, 0.09);
+    --accent: #9d6cff;
+    --max-width: 1160px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, system-ui, sans-serif;
+    background: #fafafa;
+    color: #171a21;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: min(calc(100% - 48px), var(--max-width));
+    margin-inline: auto;
+}
+
+/* Títulos principais usam a mesma fonte visual do portfólio. */
+h1,
+h2,
+h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.05;
+}
+
+/* ==========================================================
+   2. CABEÇALHO / NAVEGAÇÃO
+   ========================================================== */
+
+.site-header {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    transition: 0.25s ease;
+}
+
+/* Fundo aparece quando o usuário rola a página. */
+.site-header.scrolled {
+    background: rgba(8, 11, 18, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font: 700 1.25rem 'Space Grotesk', sans-serif;
+    color: #fff;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: #b8bfcc;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.nav-menu a:hover {
+    color: #fff;
+}
+
+.nav-contact {
+    padding: 10px 17px;
+    border: 1px solid rgba(157, 108, 255, 0.5);
+    border-radius: 999px;
+    color: #fff;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   3. HERO
+   ========================================================== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    background: var(--bg);
+    color: #fff;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        110deg,
+        rgba(8, 11, 18, 0.98),
+        rgba(8, 11, 18, 0.82),
+        rgba(8, 11, 18, 0.96)
+    );
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+    padding-top: 70px;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.18;
+}
+
+.glow-one {
+    background: #7d4dff;
+    right: 8%;
+    top: 15%;
+}
+
+.glow-two {
+    background: #27c7ff;
+    left: 25%;
+    bottom: -30%;
+    opacity: 0.08;
+}
+
+.eyebrow,
+.section-kicker {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.eyebrow span {
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 9vw, 7.4rem);
+    letter-spacing: -0.07em;
+    margin-bottom: 25px;
+}
+
+.hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.hero-text {
+    max-width: 600px;
+    color: #b5bdcb;
+    font-size: 1.05rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border-radius: 11px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-secondary {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Cartão visual semelhante a um terminal. */
+.hero-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(18, 24, 36, 0.72);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+.terminal-bar,
+.window-top {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 16px;
+    background: #0c111b;
+    border-bottom: 1px solid var(--line);
+}
+
+.terminal-bar span,
+.window-top span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #485163;
+}
+
+.terminal-body {
+    padding: 32px;
+    color: #d5d9e2;
+    font: 14px/1.8 ui-monospace, SFMono-Regular, monospace;
+}
+
+.terminal-body p {
+    margin: 8px 0;
+}
+
+.code-muted {
+    color: #a56cff;
+}
+
+.terminal-body strong {
+    color: #6fd8ff;
+}
+
+.terminal-body b {
+    color: #b6e3a8;
+    font-weight: 400;
+}
+
+.indent {
+    padding-left: 22px;
+}
+
+.terminal-status {
+    margin-top: 35px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: #8e98a9;
+    font: 11px Inter, sans-serif;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: #62d49b;
+}
+
+.scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    color: #697385;
+}
+
+/* ==========================================================
+   4. SEÇÕES GERAIS
+   ========================================================== */
+
+.section {
+    padding: 120px 0;
+}
+
+.section-dark {
+    background: var(--bg);
+    color: #fff;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 100px;
+}
+
+.section h2 {
+    margin-top: 12px;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    letter-spacing: -0.055em;
+}
+
+.section h2 span {
+    color: #8c929d;
+}
+
+.section-content {
+    padding-top: 32px;
+    color: #5c6370;
+}
+
+.section-content p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 52px;
+}
+
+.section-heading > p {
+    max-width: 420px;
+    color: #8f98a8;
+    font-size: 0.92rem;
+}
+
+/* ==========================================================
+   5. SOBRE MIM
+   ========================================================== */
+
+.quick-facts {
+    display: flex;
+    gap: 36px;
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.quick-facts div {
+    display: flex;
+    flex-direction: column;
+}
+
+.quick-facts strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+}
+
+.quick-facts span {
+    color: #858c98;
+    font-size: 0.75rem;
+}
+
+/* ==========================================================
+   6. TECNOLOGIAS
+   ========================================================== */
+
+.tech-grid {
+    display: grid;
+    /* Cinco tecnologias cabem lado a lado em telas grandes.
+       Em telas menores, os media queries abaixo reduzem o número de colunas. */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.tech-card {
+    min-height: 220px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.tech-card i {
+    color: var(--accent);
+    font-size: 1.8rem;
+}
+
+.tech-card h3 {
+    margin: 25px 0 9px;
+    font-size: 1.35rem;
+}
+
+.tech-card p {
+    color: #8e98a8;
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+/* Pequenos trechos de código, como switch/case, ficam destacados. */
+.tech-card code {
+    color: #c3a4ff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.tech-card span {
+    display: inline-block;
+    margin-top: 20px;
+    color: #737d8e;
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ==========================================================
+   7. PROJETOS
+   ========================================================== */
+
+.project-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: #101520;
+    color: #fff;
+}
+
+.project-visual {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: radial-gradient(circle at 50% 50%, #1c2540 0, #101520 62%);
+}
+
+.project-window {
+    width: min(100%, 480px);
+    overflow: hidden;
+    border: 1px solid #303a4d;
+    border-radius: 14px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+    transform: rotate(-2deg);
+}
+
+.window-top small {
+    margin-left: auto;
+    color: #697487;
+    font-size: 0.65rem;
+}
+
+.code-preview {
+    min-height: 270px;
+    padding: 30px;
+    background: #0a0e15;
+    color: #aab4c5;
+    font: 12px/2 ui-monospace, monospace;
+}
+
+.code-preview span:nth-child(1),
+.code-preview span:nth-child(4) {
+    color: #b38aff;
+}
+
+.code-preview span:nth-child(5) {
+    color: #7bd8ff;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 58px 52px;
+}
+
+.project-number {
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.project-info h3 {
+    margin: 16px 0 18px;
+    font-size: 2.2rem;
+}
+
+.project-info p {
+    color: #919baa;
+    font-size: 0.92rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 25px 0;
+}
+
+.tags span {
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: #c1c8d3;
+    font-size: 0.67rem;
+}
+
+.project-actions {
+    display: flex;
+    gap: 22px;
+    margin-top: 12px;
+}
+
+.project-actions a {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.project-actions a:hover {
+    color: var(--accent);
+}
+
+/* ==========================================================
+   8. FORMAÇÃO / TIMELINE
+   ========================================================== */
+
+/* Mantém a coluna da formação alinhada com o restante da seção. */
+.formation {
+    align-items: start;
+}
+
+/*
+   A linha pertence ao próprio bloco da timeline.
+   Assim, ela cresce automaticamente conforme novas formações
+   são adicionadas.
+*/
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+    margin: 8px 0 0 8px;
+    padding: 0 0 8px 36px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Cada formação ocupa sua própria posição na linha. */
+.timeline-item {
+    position: relative;
+    min-width: 0;
+}
+
+/* Bolinha alinhada exatamente sobre a linha vertical. */
+.timeline-dot {
+    position: absolute;
+    top: 5px;
+    left: -42px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid #101520;
+    box-shadow: 0 0 0 3px rgba(157, 108, 255, 0.12);
+}
+
+.timeline-label {
+    margin: 0;
+    color: var(--accent) !important;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+}
+
+.timeline h3 {
+    margin: 12px 0 8px;
+    font-size: clamp(1.25rem, 2.3vw, 1.6rem);
+    line-height: 1.15;
+}
+
+.timeline-item > p:not(.timeline-label) {
+    margin: 0;
+    color: #b0b8c7;
+}
+
+.timeline small {
+    display: inline-block;
+    margin-top: 12px;
+    color: #788395;
+}
+
+/* ==========================================================
+   9. CONTATO
+   ========================================================== */
+
+.contact-section {
+    padding: 100px 0;
+    background: #f0f1f4;
+}
+
+.contact-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.contact-box h2 {
+    margin: 14px 0;
+    font: 700 clamp(2.8rem, 5vw, 4.5rem) / 1 'Space Grotesk';
+    letter-spacing: -0.06em;
+}
+
+.contact-box > div > p:last-child {
+    max-width: 480px;
+    color: #646b77;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #d6d9df;
+}
+
+.contact-links a {
+    display: grid;
+    grid-template-columns: 30px 1fr 20px;
+    gap: 15px;
+    align-items: center;
+    padding: 19px 0;
+    border-bottom: 1px solid #d6d9df;
+    font-weight: 700;
+}
+
+.contact-links span {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-links small {
+    color: #7c8491;
+    font-weight: 400;
+}
+
+/* ==========================================================
+   10. RODAPÉ
+   ========================================================== */
+
+.footer {
+    padding: 28px 0;
+    background: #080b12;
+    color: #707a8b;
+    font-size: 0.72rem;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer span:first-child {
+    color: #c1c7d1;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+/* ==========================================================
+   11. RESPONSIVIDADE — TABLET / CELULAR
+   ========================================================== */
+
+@media (max-width: 850px) {
+    .container {
+        width: min(calc(100% - 34px), var(--max-width));
+    }
+
+    /* Menu mobile. */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 20px 22px 25px;
+        background: rgba(8, 11, 18, 0.97);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 12px 0;
+    }
+
+    .nav-contact {
+        text-align: center;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 140px 0 100px;
+    }
+
+    .hero-grid,
+    .two-col,
+    .project-card,
+    .contact-box {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .hero-card {
+        display: none;
+    }
+
+    .section {
+        padding: 85px 0;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+   .tech-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-visual {
+        min-height: 330px;
+        padding: 25px;
+    }
+
+    .project-info {
+        padding: 40px 28px;
+    }
+
+    /* Na tela pequena a timeline ocupa toda a largura disponível. */
+    .timeline {
+        margin-left: 8px;
+        gap: 42px;
+        padding-left: 30px;
+    }
+
+    .timeline-dot {
+        left: -36px;
+    }
+
+    .footer .container {
+        flex-direction: column;
+    }
+}
+
+/* Celulares menores. */
+@media (max-width: 520px) {
+    .hero h1 {
+        font-size: 3.8rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        justify-content: center;
+    }
+
+   .tech-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-facts {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .project-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .project-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .timeline {
+        gap: 36px;
+        margin-left: 6px;
+        padding-left: 25px;
+    }
+
+    .timeline-dot {
+        left: -31px;
+        width: 11px;
+        height: 11px;
+    }
+}
